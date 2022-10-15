@@ -1,14 +1,26 @@
-import express from "express";
+const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 
-import data from "./data.js"
+const classRoutes = require('./routes/classRoutes');
+const studetsRoutes = require('./routes/studentsRoutes');
 
-app.get('/api/products', (req,res)=>{
-    res.send(data.products)
+
+const PORT = process.env.PORT || 5000;
+const MONGODB_URI = "mongodb://localhost:27017/restapi";
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-const port = process.env.PORT || 5000
+app.use('/class', classRoutes);
+app.use('/students', studetsRoutes);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-})
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}.`);
+});
