@@ -18,3 +18,41 @@ POST: localhost:5000/api/users/signup
     "password": "123456",
     "isAdmin":"true"
 }
+
+
+POST (Order): localhost:5000/api/orders
+{
+    "shippingAddress": {
+        "fullName":"fullName",
+        "address": "Kulesara2",
+        "city": "Greater Noida",
+        "postalCode": "201306",
+        "country": "India"
+    },
+    "_id": "634a8d912179849f43d0cd46",
+    "itemsPrice":10,
+    "taxPrice": 9.75,
+    "shippingPrice": 100,
+    "totalPrice": 174.75,
+    "isPaid": false,
+    "isDelivered": false,
+    "orderItems": [
+        {
+            "_id": "634a8d912179849f43d0cd47",
+            "slug":"slug",
+            "product": "634a74715d6a1756024141e7",
+            "name": "Adidas Fit Pant",
+            "image": "/images/p4.jpg",
+            "price": 65,
+            "quantity": 1
+        }
+    ],
+    "user": "634a74715d6a1756024141ea",
+    "paymentMethod": "PayPal",
+    "createdAt": "2022-10-15T10:38:09.988Z",
+    "updatedAt": "2022-10-15T10:38:09.988Z",
+    "__v": 0
+}
+
+
+GET (Order): localhost:5000/api/orders/634a8d912179849f43d0cd46
