@@ -3,14 +3,11 @@ const app = express();
 
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import data from "./data.js"
 import seedRouter from "./routes/seedRoutes.js";
 import ProductRouter from "./routes/productRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 dotenv.config();
-
-app.use('/api/seed', seedRouter);
-app.use('/api/products', ProductRouter);
 
 mongoose.connect('mongodb://localhost:27017/nodejs', () => {
     console.log('Connected to DB')
@@ -18,9 +15,17 @@ mongoose.connect('mongodb://localhost:27017/nodejs', () => {
     console.log(err)
 })
 
-app.get('/api/products', (req,res) => {
-    res.send(data.products)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/seed', seedRouter);
+app.use('/api/products', ProductRouter);
+app.use('/api/users', userRouter);
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
+
 
 const port = process.env.PORT;
 

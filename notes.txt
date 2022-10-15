@@ -2,3 +2,9 @@ To get data from data.js file: http://localhost:5000/api/products
 
 GET: localhost:5000/api/seed
 GET: localhost:5000/api/products
+
+POST: localhost:5000/api/users/signin
+{
+    "email": "admin@example.com",
+    "password": "123456"
+}
