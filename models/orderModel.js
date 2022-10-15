@@ -22,7 +22,18 @@ const orderSchema = new mongoose.Schema(
       city: { type: String, required: true },
       postalCode: { type: String, required: true },
       country: { type: String, required: true },
+
+      //Choose-Address-On-Google-Map
+      location: {
+        lat: Number,
+        lng: Number,
+        address: String,
+        name: String,
+        vicinity: String,
+        googleAddressId: String,
+      },
     },
+    
     paymentMethod: { type: String, required: true },
     paymentResult: {
       id: String,
