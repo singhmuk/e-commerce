@@ -68,6 +68,17 @@ productRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) 
   })
 );
 
+productRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.remove();
+      res.send({ message: 'Product Deleted' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
+
 productRouter.get('/search', expressAsyncHandler(async (req, res) => {
     const { query } = req;
     const pageSize = query.pageSize || PAGE_SIZE;
