@@ -34,6 +34,13 @@ orderRouter.get('/', isAuth, expressAsyncHandler(async (req, res) => {
   })
 );
 
+//Display-Order-History
+orderRouter.get('/mine', isAuth, expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
 orderRouter.get('/:id', isAuth, expressAsyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) {

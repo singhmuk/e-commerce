@@ -67,3 +67,6 @@ PUT (PayPAl): localhost:5000/api/orders/634a8d912179849f43d0cd46/pay
  "slug": "123456",
  "quantity": "123456"
 }
+
+
+GET (Order History): localhost:5000/api/orders/mine
