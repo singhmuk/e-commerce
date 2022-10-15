@@ -1,0 +1,1 @@
+To get data from data.js file: http://localhost:5000/api/products
