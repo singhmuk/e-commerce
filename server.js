@@ -12,7 +12,7 @@ dotenv.config();
 app.use('/api/seed', seedRouter);
 app.use('/api/products', ProductRouter);
 
-mongoose.connect(process.env.MONGODB_URL, () => {
+mongoose.connect('mongodb://localhost:27017/nodejs', () => {
     console.log('Connected to DB')
 }).catch(err => {
     console.log(err)
