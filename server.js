@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
+const items = require('./routes/item');
+const itemsOp = require('./routes/itemsOp');
+// const findsOp = require('./routes/finds');
+
 const app = express();
-
-const classRoutes = require('./routes/classRoutes');
-const studetsRoutes = require('./routes/studentsRoutes');
-
-
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = "mongodb://localhost:27017/restapi";
 
@@ -18,8 +18,24 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
-app.use('/class', classRoutes);
-app.use('/students', studetsRoutes);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+  });
+}
+
+app.use('/item', items);
+app.use('/itemsOp', itemsOp);
+// app.use('/finds', findsOp);
+
+
+mongoose.connection.once('open', function () {
+  console.log('Connected to the Database.');
+});
+mongoose.connection.on('error', function (error) {
+  console.log('Mongoose Connection Error : ' + error);
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}.`);
