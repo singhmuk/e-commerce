@@ -120,4 +120,12 @@ orderRouter.put( '/:id/pay', isAuth, expressAsyncHandler(async (req, res) => {
   })
 );
 
+
+//List-Orders
+orderRouter.get('/', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find().populate('user', 'name');
+    res.send(orders);
+  })
+);
+
 export default orderRouter;
