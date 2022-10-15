@@ -71,5 +71,6 @@ PUT (PayPAl): localhost:5000/api/orders/634a8d912179849f43d0cd46/pay
 
 GET (Order History): localhost:5000/api/orders/mine
 
-
 PUT (Update-Profile-Screen): localhost:5000/api/orders/profile
+
+GET (Dashboard-Screen): localhost:5000/api/orders/summary
