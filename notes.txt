@@ -78,3 +78,5 @@ GET (Dashboard-Screen): localhost:5000/api/orders/summary
 POST (Create-Product): localhost:5000/api/products
 
 PUT (Implement-Update-Product): localhost:5000/api/products/634a74715d6a1756024141e4
+
+POST (Upload image): localhost:5000/api/upload
