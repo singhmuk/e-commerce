@@ -4,8 +4,13 @@ const app = express();
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import data from "./data.js"
+import seedRouter from "./routes/seedRoutes.js";
+import ProductRouter from "./routes/productRoutes.js";
 
 dotenv.config();
+
+app.use('/api/seed', seedRouter);
+app.use('/api/products', ProductRouter);
 
 mongoose.connect(process.env.MONGODB_URL, () => {
     console.log('Connected to DB')

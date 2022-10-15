@@ -1,1 +1,4 @@
 To get data from data.js file: http://localhost:5000/api/products
+
+GET: localhost:5000/api/seed
+GET: localhost:5000/api/products
