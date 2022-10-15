@@ -74,3 +74,5 @@ GET (Order History): localhost:5000/api/orders/mine
 PUT (Update-Profile-Screen): localhost:5000/api/orders/profile
 
 GET (Dashboard-Screen): localhost:5000/api/orders/summary
+
+POST (Create-Product): localhost:5000/api/products
